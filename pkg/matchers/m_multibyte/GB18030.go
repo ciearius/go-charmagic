@@ -60,7 +60,7 @@ var commonChars_gb_18030 = []uint16{
 	0xd2b5, 0xd2bb, 0xd2d4, 0xd3c3, 0xd3d0, 0xd3fd, 0xd4c2, 0xd4da, 0xd5e2, 0xd6d0,
 }
 
-func Match_gb_18030() *MultiByteMatcher {
+func Create_gb_18030_Matcher() *MultiByteMatcher {
 	return &MultiByteMatcher{
 		"GB-18030",
 		"zh",

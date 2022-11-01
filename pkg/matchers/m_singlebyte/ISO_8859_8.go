@@ -51,22 +51,22 @@ var ngrams_8859_8_he = [64]uint32{
 	0xEDE9E9, 0xEDE9F0, 0xEDE9F8, 0xEE20E4, 0xEE20ED, 0xEE20FA, 0xEEE120, 0xEEE420, 0xF2E420, 0xF920E4, 0xF920ED, 0xF920FA, 0xF9E420, 0xFAE020, 0xFAE420, 0xFAE5E9,
 }
 
-func Match_8859_8(language string, ngram *[64]uint32) *SingleByteMatcher {
+func Create_8859_8_Matcher(language string, ngram *[64]uint32) *SingleByteMatcher {
 	return &SingleByteMatcher{
-		charset:          "ISO-8859-8",
-		hasC1ByteCharset: "windows-1255",
-		language:         language,
-		charMap:          &charMap_8859_8,
-		ngram:            ngram,
+		charset:        "ISO-8859-8",
+		HasC1_Fallback: "windows-1255",
+		language:       language,
+		charMap:        &charMap_8859_8,
+		ngram:          ngram,
 	}
 }
 
-func Match_8859_8_I_he() matching.Matcher {
-	r := Match_8859_8("he", &ngrams_8859_8_I_he)
+func Create_8859_8_I_he_Matcher() matching.Matcher {
+	r := Create_8859_8_Matcher("he", &ngrams_8859_8_I_he)
 	r.charset = "ISO-8859-8-I"
 	return r
 }
 
-func Match_8859_8_he() matching.Matcher {
-	return Match_8859_8("he", &ngrams_8859_8_he)
+func Create_8859_8_he_Matcher() matching.Matcher {
+	return Create_8859_8_Matcher("he", &ngrams_8859_8_he)
 }

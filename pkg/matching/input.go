@@ -1,7 +1,7 @@
 package matching
 
-type MatcherInput struct {
+type Input struct {
 	Raw              []byte
 	OccurranceMatrix []int
-	IsC1             bool
+	HasC1            bool
 }

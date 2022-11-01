@@ -1,5 +1,7 @@
 package m_singlebyte
 
+import "github.com/cearius/go-charmagic/pkg/matching"
+
 var charMap_8859_6 = [256]byte{
 	0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
 	0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
@@ -42,7 +44,7 @@ var ngrams_8859_6_ar = [64]uint32{
 	0xE520C7, 0xE5C720, 0xE5C920, 0xE5E620, 0xE620C7, 0xE720C7, 0xE7C720, 0xE8C7E4, 0xE8E620, 0xE920C7, 0xEA20C7, 0xEA20E5, 0xEA20E8, 0xEAC920, 0xEAD120, 0xEAE620,
 }
 
-func Match_8859_6(language string, ngram *[64]uint32) *SingleByteMatcher {
+func Create_8859_6_Matcher(language string, ngram *[64]uint32) matching.Matcher {
 	return &SingleByteMatcher{
 		charset:  "ISO-8859-6",
 		language: language,
@@ -51,6 +53,6 @@ func Match_8859_6(language string, ngram *[64]uint32) *SingleByteMatcher {
 	}
 }
 
-func Match_8859_6_ar() *SingleByteMatcher {
-	return Match_8859_6("ar", &ngrams_8859_6_ar)
+func Create_8859_6_ar_Matcher() matching.Matcher {
+	return Create_8859_6_Matcher("ar", &ngrams_8859_6_ar)
 }

@@ -71,7 +71,7 @@ func (charDecoder_euc) DecodeOneChar(input []byte) (c uint16, remain []byte, err
 	return
 }
 
-func Match_euc_jp() *MultiByteMatcher {
+func Create_euc_jp_Matcher() *MultiByteMatcher {
 	return &MultiByteMatcher{
 		"EUC-JP",
 		"ja",
@@ -80,7 +80,7 @@ func Match_euc_jp() *MultiByteMatcher {
 	}
 }
 
-func Match_euc_kr() *MultiByteMatcher {
+func Create_euc_kr_Matcher() *MultiByteMatcher {
 	return &MultiByteMatcher{
 		"EUC-KR",
 		"ko",

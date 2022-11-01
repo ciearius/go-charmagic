@@ -5,17 +5,18 @@ import (
 	"sort"
 
 	"github.com/cearius/go-charmagic/internal/input"
+	"github.com/cearius/go-charmagic/pkg/matchers"
 	"github.com/cearius/go-charmagic/pkg/matching"
 )
 
 var ErrNoMatchFound = errors.New("no match found")
 
-// DetectAll matches all supported encodings against the input bytes and assigns a confidence score.
+// MatchAll matches all supported encodings against the input bytes and assigns a confidence score.
 // The higher the score the more likely the algorithm deemed the chance of having picked the right encoding.
-func DetectAll(buf []byte) (results matching.MatchResults) {
+func MatchAll(buf []byte) (results matching.Results) {
 	input := input.FromBytes(buf)
 
-	for _, m := range matchers {
+	for _, m := range matchers.CreateAll() {
 		results = append(results, m.Match(input))
 	}
 
@@ -25,15 +26,15 @@ func DetectAll(buf []byte) (results matching.MatchResults) {
 
 }
 
-// DetectBest is a shorthand for selecting the highest confidence result found by DetectAll.
-func DetectBest(buf []byte) (matching.MatchResult, error) {
+// DetectBest is a shorthand for selecting the highest confidence result.
+func DetectBest(buf []byte) (matching.Result, error) {
 
-	results := DetectAll(buf)
+	results := MatchAll(buf)
 
 	if len(results) >= 1 {
 		return results[0], nil
 	}
 
-	return matching.MatchResult{}, ErrNoMatchFound
+	return matching.Result{}, ErrNoMatchFound
 
 }

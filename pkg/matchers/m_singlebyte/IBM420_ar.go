@@ -36,7 +36,7 @@ var ngrams_IBM420_ar_ltr = [64]uint32{
 	0xB14062, 0xB15640, 0xB156CF, 0xB19A40, 0xB1B140, 0xBB4062, 0xBB40DC, 0xBBB156, 0xBD5640, 0xBDBB40, 0xCF4062, 0xCF40DC, 0xCFB156, 0xDAB19A, 0xDCAB40, 0xDCB156,
 }
 
-func Match_IBM420_ar(charset string, ngram *[64]uint32) matching.Matcher {
+func Create_IBM420_ar_Matcher(charset string, ngram *[64]uint32) matching.Matcher {
 	return &SingleByteMatcher{
 		charset:  charset,
 		language: "ar",
@@ -45,10 +45,10 @@ func Match_IBM420_ar(charset string, ngram *[64]uint32) matching.Matcher {
 	}
 }
 
-func Match_IBM420_ar_rtl() matching.Matcher {
-	return Match_IBM420_ar("IBM420_rtl", &ngrams_IBM420_ar_rtl)
+func Create_IBM420_ar_rtl_Matcher() matching.Matcher {
+	return Create_IBM420_ar_Matcher("IBM420_rtl", &ngrams_IBM420_ar_rtl)
 }
 
-func Match_IBM420_ar_ltr() matching.Matcher {
-	return Match_IBM420_ar("IBM420_ltr", &ngrams_IBM420_ar_ltr)
+func Create_IBM420_ar_ltr_Matcher() matching.Matcher {
+	return Create_IBM420_ar_Matcher("IBM420_ltr", &ngrams_IBM420_ar_ltr)
 }

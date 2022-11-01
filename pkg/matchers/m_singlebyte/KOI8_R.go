@@ -44,7 +44,7 @@ var ngrams_KOI8_R = [64]uint32{
 	0xD0CFCC, 0xD0D2C5, 0xD0D2C9, 0xD0D2CF, 0xD2C1D7, 0xD2C5C4, 0xD3D120, 0xD3D4C1, 0xD3D4C9, 0xD3D4D7, 0xD4C5CC, 0xD4CF20, 0xD4CFD2, 0xD4D820, 0xD9C820, 0xDED4CF,
 }
 
-func Match_KOI8_R() matching.Matcher {
+func Create_KOI8_R_Matcher() matching.Matcher {
 	return &SingleByteMatcher{
 		charset:  "KOI8-R",
 		language: "ru",

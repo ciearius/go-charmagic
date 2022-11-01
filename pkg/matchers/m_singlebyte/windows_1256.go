@@ -44,7 +44,7 @@ var ngrams_windows_1256 = [64]uint32{
 	0xE320C7, 0xE3C720, 0xE3C920, 0xE3E420, 0xE420C7, 0xE520C7, 0xE5C720, 0xE6C7E1, 0xE6E420, 0xEC20C7, 0xED20C7, 0xED20E3, 0xED20E6, 0xEDC920, 0xEDD120, 0xEDE420,
 }
 
-func Match_windows_1256() matching.Matcher {
+func Create_windows_1256_Matcher() matching.Matcher {
 	return &SingleByteMatcher{
 		charset:  "windows-1256",
 		language: "ar",

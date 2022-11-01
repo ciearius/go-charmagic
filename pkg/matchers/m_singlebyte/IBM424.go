@@ -36,7 +36,7 @@ var ngrams_IBM424_he_ltr = [64]uint32{
 	0x555151, 0x555158, 0x555168, 0x564045, 0x564055, 0x564071, 0x564240, 0x564540, 0x624540, 0x694045, 0x694055, 0x694071, 0x694540, 0x714140, 0x714540, 0x714651,
 }
 
-func Match_IBM424_he(charset string, ngram *[64]uint32) matching.Matcher {
+func Create_IBM424_he_Matcher(charset string, ngram *[64]uint32) matching.Matcher {
 	return &SingleByteMatcher{
 		charset:  charset,
 		language: "he",
@@ -45,10 +45,10 @@ func Match_IBM424_he(charset string, ngram *[64]uint32) matching.Matcher {
 	}
 }
 
-func Match_IBM424_he_rtl() matching.Matcher {
-	return Match_IBM424_he("IBM424_rtl", &ngrams_IBM424_he_rtl)
+func Create_IBM424_he_rtl_Matcher() matching.Matcher {
+	return Create_IBM424_he_Matcher("IBM424_rtl", &ngrams_IBM424_he_rtl)
 }
 
-func Match_IBM424_he_ltr() matching.Matcher {
-	return Match_IBM424_he("IBM424_ltr", &ngrams_IBM424_he_ltr)
+func Create_IBM424_he_ltr_Matcher() matching.Matcher {
+	return Create_IBM424_he_Matcher("IBM424_ltr", &ngrams_IBM424_he_ltr)
 }

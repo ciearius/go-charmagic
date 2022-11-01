@@ -38,7 +38,7 @@ var commonChars_big5 = []uint16{
 	0xbba1, 0xbdd1, 0xc2c4, 0xc3b9, 0xc440, 0xc45f,
 }
 
-func Match_big5() *MultiByteMatcher {
+func Create_big5_Matcher() *MultiByteMatcher {
 	return &MultiByteMatcher{
 		"Big5",
 		"zh",

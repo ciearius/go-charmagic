@@ -10,8 +10,8 @@ const UTF8_CharsetName = "UTF-8"
 
 var UTF8_BOM = []byte{0xEF, 0xBB, 0xBF}
 
-var MatchUTF8 = matching.CreateMatcher(
-	func(input matching.MatcherInput) (out matching.MatchResult) {
+func Create_UTF8_Matcher() matching.Matcher {
+	return CreateUnicodeMatcher(func(input matching.Input) (out matching.Result) {
 		out.Charset = UTF8_CharsetName
 		out.BOM = bytes.HasPrefix(input.Raw, UTF8_BOM)
 
@@ -68,5 +68,5 @@ var MatchUTF8 = matching.CreateMatcher(
 		}
 
 		return
-	},
-)
+	})
+}

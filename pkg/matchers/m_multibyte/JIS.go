@@ -35,7 +35,7 @@ var commonChars_sjis = []uint16{
 	0x838a, 0x838b, 0x838d, 0x8393, 0x8e96, 0x93fa, 0x95aa,
 }
 
-func Match_sjis() *MultiByteMatcher {
+func Create_sjis_Matcher() *MultiByteMatcher {
 	return &MultiByteMatcher{
 		"Shift_JIS",
 		"ja",

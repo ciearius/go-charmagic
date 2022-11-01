@@ -107,43 +107,43 @@ var ngrams_8859_1_sv = [64]uint32{
 	0x6F6E20, 0x70E520, 0x722061, 0x722073, 0x726120, 0x736B61, 0x736F6D, 0x742073, 0x746120, 0x746520, 0x746572, 0x74696C, 0x747420, 0x766172, 0xE47220, 0xF67220,
 }
 
-func Match_8859_1(language string, ngram *[64]uint32) matching.Matcher {
+func Create_8859_1_Matcher(language string, ngram *[64]uint32) matching.Matcher {
 	return &SingleByteMatcher{
-		charset:          "ISO-8859-1",
-		hasC1ByteCharset: "windows-1252",
-		language:         language,
-		charMap:          &charMap_8859_1,
-		ngram:            ngram,
+		charset:        "ISO-8859-1",
+		HasC1_Fallback: "windows-1252",
+		language:       language,
+		charMap:        &charMap_8859_1,
+		ngram:          ngram,
 	}
 }
 
-func Match_8859_1_en() matching.Matcher {
-	return Match_8859_1("en", &ngrams_8859_1_en)
+func Create_8859_1_en_Matcher() matching.Matcher {
+	return Create_8859_1_Matcher("en", &ngrams_8859_1_en)
 }
-func Match_8859_1_da() matching.Matcher {
-	return Match_8859_1("da", &ngrams_8859_1_da)
+func Create_8859_1_da_Matcher() matching.Matcher {
+	return Create_8859_1_Matcher("da", &ngrams_8859_1_da)
 }
-func Match_8859_1_de() matching.Matcher {
-	return Match_8859_1("de", &ngrams_8859_1_de)
+func Create_8859_1_de_Matcher() matching.Matcher {
+	return Create_8859_1_Matcher("de", &ngrams_8859_1_de)
 }
-func Match_8859_1_es() matching.Matcher {
-	return Match_8859_1("es", &ngrams_8859_1_es)
+func Create_8859_1_es_Matcher() matching.Matcher {
+	return Create_8859_1_Matcher("es", &ngrams_8859_1_es)
 }
-func Match_8859_1_fr() matching.Matcher {
-	return Match_8859_1("fr", &ngrams_8859_1_fr)
+func Create_8859_1_fr_Matcher() matching.Matcher {
+	return Create_8859_1_Matcher("fr", &ngrams_8859_1_fr)
 }
-func Match_8859_1_it() matching.Matcher {
-	return Match_8859_1("it", &ngrams_8859_1_it)
+func Create_8859_1_it_Matcher() matching.Matcher {
+	return Create_8859_1_Matcher("it", &ngrams_8859_1_it)
 }
-func Match_8859_1_nl() matching.Matcher {
-	return Match_8859_1("nl", &ngrams_8859_1_nl)
+func Create_8859_1_nl_Matcher() matching.Matcher {
+	return Create_8859_1_Matcher("nl", &ngrams_8859_1_nl)
 }
-func Match_8859_1_no() matching.Matcher {
-	return Match_8859_1("no", &ngrams_8859_1_no)
+func Create_8859_1_no_Matcher() matching.Matcher {
+	return Create_8859_1_Matcher("no", &ngrams_8859_1_no)
 }
-func Match_8859_1_pt() matching.Matcher {
-	return Match_8859_1("pt", &ngrams_8859_1_pt)
+func Create_8859_1_pt_Matcher() matching.Matcher {
+	return Create_8859_1_Matcher("pt", &ngrams_8859_1_pt)
 }
-func Match_8859_1_sv() matching.Matcher {
-	return Match_8859_1("sv", &ngrams_8859_1_sv)
+func Create_8859_1_sv_Matcher() matching.Matcher {
+	return Create_8859_1_Matcher("sv", &ngrams_8859_1_sv)
 }

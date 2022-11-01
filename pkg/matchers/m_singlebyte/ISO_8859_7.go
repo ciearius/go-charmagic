@@ -44,16 +44,16 @@ var ngrams_8859_7_el = [64]uint32{
 	0xF220EA, 0xF220F0, 0xF220F4, 0xF3E520, 0xF3E720, 0xF3F4EF, 0xF4E120, 0xF4E1E9, 0xF4E7ED, 0xF4E7F2, 0xF4E9EA, 0xF4EF20, 0xF4EFF5, 0xF4F9ED, 0xF9ED20, 0xFEED20,
 }
 
-func Match_8859_7(language string, ngram *[64]uint32) matching.Matcher {
+func Create_8859_7_Matcher(language string, ngram *[64]uint32) matching.Matcher {
 	return &SingleByteMatcher{
-		charset:          "ISO-8859-7",
-		hasC1ByteCharset: "windows-1253",
-		language:         language,
-		charMap:          &charMap_8859_7,
-		ngram:            ngram,
+		charset:        "ISO-8859-7",
+		HasC1_Fallback: "windows-1253",
+		language:       language,
+		charMap:        &charMap_8859_7,
+		ngram:          ngram,
 	}
 }
 
-func Match_8859_7_el() matching.Matcher {
-	return Match_8859_7("el", &ngrams_8859_7_el)
+func Create_8859_7_el_Matcher() matching.Matcher {
+	return Create_8859_7_Matcher("el", &ngrams_8859_7_el)
 }

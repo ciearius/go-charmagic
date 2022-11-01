@@ -1,14 +1,14 @@
-package m_singlebyte
+package ling
 
-type ngramState struct {
+type NgramState struct {
 	ngram                uint32
 	ignoreSpace          bool
 	ngramCount, ngramHit uint32
 	table                *[64]uint32
 }
 
-func newNgramState(table *[64]uint32) *ngramState {
-	return &ngramState{
+func NewNgramState(table *[64]uint32) *NgramState {
+	return &NgramState{
 		ngram:       0,
 		ignoreSpace: false,
 		ngramCount:  0,
@@ -17,7 +17,7 @@ func newNgramState(table *[64]uint32) *ngramState {
 	}
 }
 
-func (s *ngramState) AddByte(b byte) {
+func (s *NgramState) AddByte(b byte) {
 	const ngramMask = 0xFFFFFF
 	if !(b == 0x20 && s.ignoreSpace) {
 		s.ngram = ((s.ngram << 8) | uint32(b)) & ngramMask
@@ -30,14 +30,14 @@ func (s *ngramState) AddByte(b byte) {
 	s.ignoreSpace = (b == 0x20)
 }
 
-func (s *ngramState) HitRate() float32 {
+func (s *NgramState) HitRate() float32 {
 	if s.ngramCount == 0 {
 		return 0
 	}
 	return float32(s.ngramHit) / float32(s.ngramCount)
 }
 
-func (s *ngramState) lookup() bool {
+func (s *NgramState) lookup() bool {
 	var index int
 	if s.table[index+32] <= s.ngram {
 		index += 32

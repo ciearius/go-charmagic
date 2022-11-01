@@ -21,7 +21,17 @@ type CharDecoder interface {
 	DecodeOneChar([]byte) (c uint16, remain []byte, err error)
 }
 
-func (r *MultiByteMatcher) Match(input matching.MatcherInput) (output matching.MatchResult) {
+func Create_MultiByte_Matchers() []matching.Matcher {
+	return []matching.Matcher{
+		Create_big5_Matcher(),
+		Create_euc_jp_Matcher(),
+		Create_euc_kr_Matcher(),
+		Create_gb_18030_Matcher(),
+		Create_sjis_Matcher(),
+	}
+}
+
+func (r *MultiByteMatcher) Match(input matching.Input) (output matching.Result) {
 	output.Charset = r.charset
 	output.Language = r.language
 	output.Confidence = r.matchConfidence(input)
@@ -29,7 +39,7 @@ func (r *MultiByteMatcher) Match(input matching.MatcherInput) (output matching.M
 	return
 }
 
-func (r *MultiByteMatcher) matchConfidence(input matching.MatcherInput) int {
+func (r *MultiByteMatcher) matchConfidence(input matching.Input) int {
 	raw := input.Raw
 	var c uint16
 	var err error

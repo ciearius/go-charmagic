@@ -44,7 +44,7 @@ var ngrams_windows_1251 = [64]uint32{
 	0xEFEEEB, 0xEFF0E5, 0xEFF0E8, 0xEFF0EE, 0xF0E0E2, 0xF0E5E4, 0xF1F2E0, 0xF1F2E2, 0xF1F2E8, 0xF1FF20, 0xF2E5EB, 0xF2EE20, 0xF2EEF0, 0xF2FC20, 0xF7F2EE, 0xFBF520,
 }
 
-func Match_windows_1251() matching.Matcher {
+func Create_windows_1251_Matcher() matching.Matcher {
 	return &SingleByteMatcher{
 		charset:  "windows-1251",
 		language: "ar",

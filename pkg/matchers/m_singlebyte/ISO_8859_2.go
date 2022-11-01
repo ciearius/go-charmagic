@@ -65,25 +65,25 @@ var ngrams_8859_2_ro = [64]uint32{
 	0x6C7569, 0x6E6520, 0x6E7472, 0x6F7220, 0x70656E, 0x726520, 0x726561, 0x727520, 0x73E320, 0x746520, 0x747275, 0x74E320, 0x756920, 0x756C20, 0xBA6920, 0xEE6E20,
 }
 
-func Match_8859_2(language string, ngram *[64]uint32) matching.Matcher {
+func Create_8859_2_Matcher(language string, ngram *[64]uint32) matching.Matcher {
 	return &SingleByteMatcher{
-		charset:          "ISO-8859-2",
-		hasC1ByteCharset: "windows-1250",
-		language:         language,
-		charMap:          &charMap_8859_2,
-		ngram:            ngram,
+		charset:        "ISO-8859-2",
+		HasC1_Fallback: "windows-1250",
+		language:       language,
+		charMap:        &charMap_8859_2,
+		ngram:          ngram,
 	}
 }
 
-func Match_8859_2_cs() matching.Matcher {
-	return Match_8859_1("cs", &ngrams_8859_2_cs)
+func Create_8859_2_cs_Matcher() matching.Matcher {
+	return Create_8859_2_Matcher("cs", &ngrams_8859_2_cs)
 }
-func Match_8859_2_hu() matching.Matcher {
-	return Match_8859_1("hu", &ngrams_8859_2_hu)
+func Create_8859_2_hu_Matcher() matching.Matcher {
+	return Create_8859_2_Matcher("hu", &ngrams_8859_2_hu)
 }
-func Match_8859_2_pl() matching.Matcher {
-	return Match_8859_1("pl", &ngrams_8859_2_pl)
+func Create_8859_2_pl_Matcher() matching.Matcher {
+	return Create_8859_2_Matcher("pl", &ngrams_8859_2_pl)
 }
-func Match_8859_2_ro() matching.Matcher {
-	return Match_8859_1("ro", &ngrams_8859_2_ro)
+func Create_8859_2_ro_Matcher() matching.Matcher {
+	return Create_8859_2_Matcher("ro", &ngrams_8859_2_ro)
 }

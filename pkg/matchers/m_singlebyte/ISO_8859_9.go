@@ -44,16 +44,16 @@ var ngrams_8859_9_tr = [64]uint32{
 	0x6E206B, 0x6E6461, 0x6E6465, 0x6E6520, 0x6E6920, 0x6E696E, 0x6EFD20, 0x72696E, 0x72FD6E, 0x766520, 0x796120, 0x796F72, 0xFD6E20, 0xFD6E64, 0xFD6EFD, 0xFDF0FD,
 }
 
-func Match_8859_9(language string, ngram *[64]uint32) matching.Matcher {
+func Create_8859_9_Matcher(language string, ngram *[64]uint32) matching.Matcher {
 	return &SingleByteMatcher{
-		charset:          "ISO-8859-9",
-		hasC1ByteCharset: "windows-1254",
-		language:         language,
-		charMap:          &charMap_8859_9,
-		ngram:            ngram,
+		charset:        "ISO-8859-9",
+		HasC1_Fallback: "windows-1254",
+		language:       language,
+		charMap:        &charMap_8859_9,
+		ngram:          ngram,
 	}
 }
 
-func Match_8859_9_tr() matching.Matcher {
-	return Match_8859_9("tr", &ngrams_8859_9_tr)
+func Create_8859_9_tr_Matcher() matching.Matcher {
+	return Create_8859_9_Matcher("tr", &ngrams_8859_9_tr)
 }
