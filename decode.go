@@ -11,7 +11,7 @@ import (
 var errNoMatch = errors.New("no match in index")
 var errNotSupported = errors.New("not supported")
 
-// MustGetDecoder tries to get a matching encoding or returns nil
+// GetDecoder tries to get a matching encoding or returns nil with an error.
 func GetDecoder(name string) (encoding.Encoding, error) {
 	enc, err := query_all_indexes(name)
 
