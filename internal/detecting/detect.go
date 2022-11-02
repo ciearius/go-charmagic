@@ -16,7 +16,7 @@ var ErrNoMatchFound = errors.New("no match found")
 func MatchAll(buf []byte) (results matching.Results) {
 	input := input.FromBytes(buf)
 
-	for _, m := range charmagic.CreateAll() {
+	for _, m := range charmagic.CreateAllMatchers() {
 		results = append(results, m.Match(input))
 	}
 

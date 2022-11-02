@@ -8,7 +8,7 @@ import (
 	"github.com/cearius/go-charmagic/pkg/util"
 )
 
-func CreateAll() []matching.Matcher {
+func CreateAllMatchers() []matching.Matcher {
 	return util.Collect(
 		m_unicode.Create_Unicode_Matchers(),
 		m_singlebyte.Create_SingleByte_Matchers(),
