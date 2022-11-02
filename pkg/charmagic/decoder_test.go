@@ -21,6 +21,7 @@ func Test_AllDecoders(t *testing.T) {
 	}
 }
 
+// FIXME: this test will fail since not all encodings are supported!
 func Test_AllDecoders_AllSupported(t *testing.T) {
 	assert := testify.New(t)
 	ti := matching.FromBytes([]byte{})
