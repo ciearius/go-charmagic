@@ -1,4 +1,4 @@
-package charmagic
+package main
 
 import (
 	"errors"

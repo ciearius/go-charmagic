@@ -1,8 +1,8 @@
-package m_singlebyte
+package singlebyte
 
 import (
-	"github.com/cearius/go-charmagic/pkg/ling"
 	"github.com/cearius/go-charmagic/pkg/matching"
+	"github.com/cearius/go-charmagic/pkg/util"
 )
 
 // Recognizer for single byte charset family
@@ -61,7 +61,7 @@ func (r *SingleByteMatcher) Match(input matching.Input) matching.Result {
 }
 
 func (r *SingleByteMatcher) parseNgram(input []byte) int {
-	state := ling.NewNgramState(r.ngram)
+	state := util.NewNgramState(r.ngram)
 
 	for _, inChar := range input {
 		c := r.charMap[inChar]

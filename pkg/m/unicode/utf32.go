@@ -1,4 +1,4 @@
-package m_unicode
+package unicode
 
 var (
 	UTF32_BE_BOM = []byte{0x00, 0x00, 0xFE, 0xFF}

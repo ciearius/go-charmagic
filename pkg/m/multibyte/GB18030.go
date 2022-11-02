@@ -1,4 +1,4 @@
-package m_multibyte
+package multibyte
 
 type charDecoder_gb_18030 struct {
 }

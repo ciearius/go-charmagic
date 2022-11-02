@@ -1,4 +1,4 @@
-package m_singlebyte
+package singlebyte
 
 import "github.com/cearius/go-charmagic/pkg/matching"
 

@@ -1,4 +1,4 @@
-package ling
+package util
 
 type NgramState struct {
 	ngram                uint32

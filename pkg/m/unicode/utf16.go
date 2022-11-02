@@ -1,4 +1,4 @@
-package m_unicode
+package unicode
 
 import (
 	"bytes"

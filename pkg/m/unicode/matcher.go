@@ -1,4 +1,4 @@
-package m_unicode
+package unicode
 
 import "github.com/cearius/go-charmagic/pkg/matching"
 

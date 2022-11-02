@@ -1,4 +1,4 @@
-package m_multibyte
+package multibyte
 
 import (
 	"errors"
