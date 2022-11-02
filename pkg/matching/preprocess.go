@@ -1,12 +1,10 @@
-package input
+package matching
 
-import "github.com/cearius/go-charmagic/pkg/magic/matching"
-
-func FromBytes(buf []byte) matching.Input {
+func FromBytes(buf []byte) Input {
 	om := computeOccurances(buf)
 	isC1 := isControlCodePresent(om)
 
-	return matching.Input{
+	return Input{
 		Raw:              buf,
 		OccurranceMatrix: om,
 		HasC1:            isC1,

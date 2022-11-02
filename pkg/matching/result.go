@@ -5,6 +5,7 @@ type Result struct {
 	Language   string
 	Confidence int
 	BOM        bool
+	LTR        bool
 }
 
 type ResultConfig func(r *Result)
@@ -28,5 +29,11 @@ func WithBOM(bv bool) ResultConfig {
 func WithConfidence(confidence int) ResultConfig {
 	return func(r *Result) {
 		r.Confidence = confidence
+	}
+}
+
+func WithLeftToRight(ltr bool) ResultConfig {
+	return func(r *Result) {
+		r.LTR = ltr
 	}
 }

@@ -1,15 +1,98 @@
 package charmagic
 
 import (
-	"github.com/cearius/go-charmagic/pkg/charmagic/m_multibyte"
-	"github.com/cearius/go-charmagic/pkg/charmagic/m_unicode"
-	"github.com/cearius/go-charmagic/pkg/magic/decoding"
-	"github.com/cearius/go-charmagic/pkg/util"
+	"errors"
+	"fmt"
+
+	"github.com/cearius/go-charmagic/pkg/matching"
+	"golang.org/x/text/encoding"
+	"golang.org/x/text/encoding/ianaindex"
 )
 
-func CreateAllDecoders() []decoding.Decoder {
-	return util.Collect(
-		m_unicode.Create_Unicode_Decoders(),
-		m_multibyte.Create_MultiByteDecoder_Decoders(),
-	)
+var errNoMatch = errors.New("no match in index")
+var errNotSupported = errors.New("not supported")
+
+// TODO: refactor and define clear interface
+
+func GetDecoder(name string) (enc encoding.Encoding, err error) {
+	enc, err = ianaindex.IANA.Encoding(name)
+
+	if err == nil {
+		return
+	}
+
+	enc, err = ianaindex.MIME.Encoding(name)
+
+	if err == nil {
+		return
+	}
+
+	enc, err = ianaindex.MIB.Encoding(name)
+
+	if err == nil {
+		return
+	}
+
+	return nil, fmt.Errorf("no encoder found for %s", name)
+}
+
+func GetDecoderFromResult(r *matching.Result) (enc encoding.Encoding) {
+	name := r.Charset
+
+	// ianaindex.IANA, ianaindex.MIME, ianaindex.MIB,
+
+	enc = get_encoding(ianaindex.IANA, name)
+
+	if enc != nil {
+		return
+	}
+
+	enc = get_encoding(ianaindex.MIME, name)
+
+	if enc != nil {
+		return
+	}
+
+	enc = get_encoding(ianaindex.MIB, name)
+
+	if enc == nil {
+		panic(fmt.Errorf("no encoder found for '%s'", name))
+	}
+
+	return enc
+}
+
+func get_encoding(i *ianaindex.Index, name string) encoding.Encoding {
+	enc, err := queryIndex(ianaindex.IANA, name)
+
+	if enc != nil {
+		return enc
+	}
+
+	if err == errNotSupported {
+		panic(fmt.Errorf("encoding '%s' not supported", name))
+	}
+
+	if err == errNoMatch {
+		return nil
+	}
+
+	return enc
+}
+
+// queryIndex checks the index and returns an encoding and a bool.
+func queryIndex(i *ianaindex.Index, name string) (enc encoding.Encoding, err error) {
+	// enc == nil && err != nil => no match
+	// enc == nil && err == nil => not supported
+	enc, err = i.Encoding(name)
+
+	if enc == nil && err != nil {
+		return nil, errNoMatch
+	}
+
+	if enc == nil && err == nil {
+		return nil, errNotSupported
+	}
+
+	return
 }

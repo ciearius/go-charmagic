@@ -62,7 +62,7 @@ var commonChars_gb_18030 = []uint16{
 
 func Create_gb_18030_Matcher() *MultiByteMatcher {
 	return &MultiByteMatcher{
-		"GB-18030",
+		"GB18030",
 		"zh",
 		charDecoder_gb_18030{},
 		commonChars_gb_18030,

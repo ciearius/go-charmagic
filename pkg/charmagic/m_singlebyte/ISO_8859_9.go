@@ -1,6 +1,6 @@
 package m_singlebyte
 
-import "github.com/cearius/go-charmagic/pkg/magic/matching"
+import "github.com/cearius/go-charmagic/pkg/matching"
 
 var charMap_8859_9 = [256]byte{
 	0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,

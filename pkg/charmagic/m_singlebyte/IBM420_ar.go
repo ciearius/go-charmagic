@@ -1,6 +1,6 @@
 package m_singlebyte
 
-import "github.com/cearius/go-charmagic/pkg/magic/matching"
+import "github.com/cearius/go-charmagic/pkg/matching"
 
 var charMap_IBM420_ar = [256]byte{
 	/*        -0    -1    -2    -3    -4    -5    -6    -7    -8    -9    -A    -B    -C    -D    -E    -F   */
@@ -46,9 +46,9 @@ func Create_IBM420_ar_Matcher(charset string, ngram *[64]uint32) matching.Matche
 }
 
 func Create_IBM420_ar_rtl_Matcher() matching.Matcher {
-	return Create_IBM420_ar_Matcher("IBM420_rtl", &ngrams_IBM420_ar_rtl)
+	return Create_IBM420_ar_Matcher("IBM420", &ngrams_IBM420_ar_rtl)
 }
 
 func Create_IBM420_ar_ltr_Matcher() matching.Matcher {
-	return Create_IBM420_ar_Matcher("IBM420_ltr", &ngrams_IBM420_ar_ltr)
+	return Create_IBM420_ar_Matcher("IBM420", &ngrams_IBM420_ar_ltr)
 }

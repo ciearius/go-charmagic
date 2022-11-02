@@ -4,7 +4,7 @@ import (
 	"github.com/cearius/go-charmagic/pkg/charmagic/m_multibyte"
 	"github.com/cearius/go-charmagic/pkg/charmagic/m_singlebyte"
 	"github.com/cearius/go-charmagic/pkg/charmagic/m_unicode"
-	"github.com/cearius/go-charmagic/pkg/magic/matching"
+	"github.com/cearius/go-charmagic/pkg/matching"
 	"github.com/cearius/go-charmagic/pkg/util"
 )
 
