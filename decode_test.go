@@ -31,7 +31,7 @@ func Test_AllDecoders_AllSupported(t *testing.T) {
 		r := d.Match(ti)
 
 		assert.NotPanics(func() {
-			enc := charmagic.GetDecoderFromResult(&r)
+			enc := charmagic.MustGetDecoder(r.Charset)
 			assert.NotNil(enc)
 		})
 	}
