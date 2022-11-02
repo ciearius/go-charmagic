@@ -1,4 +1,4 @@
-package matchers
+package util
 
 // Collect appends all slices together
 func Collect[K any](ks ...[]K) []K {

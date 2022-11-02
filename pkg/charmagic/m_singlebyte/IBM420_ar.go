@@ -1,6 +1,6 @@
 package m_singlebyte
 
-import "github.com/cearius/go-charmagic/pkg/matching"
+import "github.com/cearius/go-charmagic/pkg/magic/matching"
 
 var charMap_IBM420_ar = [256]byte{
 	/*        -0    -1    -2    -3    -4    -5    -6    -7    -8    -9    -A    -B    -C    -D    -E    -F   */

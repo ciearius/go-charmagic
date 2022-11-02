@@ -1,6 +1,6 @@
 package input
 
-import "github.com/cearius/go-charmagic/pkg/matching"
+import "github.com/cearius/go-charmagic/pkg/magic/matching"
 
 func FromBytes(buf []byte) matching.Input {
 	om := computeOccurances(buf)

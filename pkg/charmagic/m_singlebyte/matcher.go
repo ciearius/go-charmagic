@@ -2,7 +2,7 @@ package m_singlebyte
 
 import (
 	"github.com/cearius/go-charmagic/pkg/ling"
-	"github.com/cearius/go-charmagic/pkg/matching"
+	"github.com/cearius/go-charmagic/pkg/magic/matching"
 )
 
 // Recognizer for single byte charset family

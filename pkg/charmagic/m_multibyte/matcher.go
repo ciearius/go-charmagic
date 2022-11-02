@@ -4,7 +4,7 @@ import (
 	"errors"
 	"math"
 
-	"github.com/cearius/go-charmagic/pkg/matching"
+	"github.com/cearius/go-charmagic/pkg/magic/matching"
 )
 
 var errEOB = errors.New("unexpected end of input buffer")

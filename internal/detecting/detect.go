@@ -5,8 +5,8 @@ import (
 	"sort"
 
 	"github.com/cearius/go-charmagic/internal/input"
-	"github.com/cearius/go-charmagic/pkg/matchers"
-	"github.com/cearius/go-charmagic/pkg/matching"
+	"github.com/cearius/go-charmagic/pkg/charmagic"
+	"github.com/cearius/go-charmagic/pkg/magic/matching"
 )
 
 var ErrNoMatchFound = errors.New("no match found")
@@ -16,19 +16,17 @@ var ErrNoMatchFound = errors.New("no match found")
 func MatchAll(buf []byte) (results matching.Results) {
 	input := input.FromBytes(buf)
 
-	for _, m := range matchers.CreateAll() {
+	for _, m := range charmagic.CreateAll() {
 		results = append(results, m.Match(input))
 	}
 
 	sort.Stable(results)
 
 	return results
-
 }
 
 // DetectBest is a shorthand for selecting the highest confidence result.
 func DetectBest(buf []byte) (matching.Result, error) {
-
 	results := MatchAll(buf)
 
 	if len(results) >= 1 {
@@ -36,5 +34,4 @@ func DetectBest(buf []byte) (matching.Result, error) {
 	}
 
 	return matching.Result{}, ErrNoMatchFound
-
 }

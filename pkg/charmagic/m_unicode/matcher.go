@@ -1,6 +1,6 @@
 package m_unicode
 
-import "github.com/cearius/go-charmagic/pkg/matching"
+import "github.com/cearius/go-charmagic/pkg/magic/matching"
 
 type UnicodeMatcher struct {
 	mf func(mi matching.Input) matching.Result

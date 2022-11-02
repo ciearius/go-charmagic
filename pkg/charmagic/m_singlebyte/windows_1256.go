@@ -1,6 +1,6 @@
 package m_singlebyte
 
-import "github.com/cearius/go-charmagic/pkg/matching"
+import "github.com/cearius/go-charmagic/pkg/magic/matching"
 
 var charMap_windows_1256 = [256]byte{
 	0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,

@@ -2,8 +2,10 @@ package m_unicode
 
 import (
 	"bytes"
+	"io"
 
-	"github.com/cearius/go-charmagic/pkg/matching"
+	"github.com/cearius/go-charmagic/pkg/magic/decoding"
+	"github.com/cearius/go-charmagic/pkg/magic/matching"
 )
 
 const UTF8_CharsetName = "UTF-8"
@@ -69,4 +71,23 @@ func Create_UTF8_Matcher() matching.Matcher {
 
 		return
 	})
+}
+
+type utf8_Decoder struct {
+}
+
+func (d *utf8_Decoder) Accepts(t matching.Result) bool {
+	return t.Charset == UTF8_CharsetName
+}
+
+func (d *utf8_Decoder) DecodeBytes(buf []byte) ([]byte, error) {
+	return buf, nil
+}
+
+func (d *utf8_Decoder) DecodeReader(r io.Reader) io.Reader {
+	return r
+}
+
+func Create_UTF8_Decoder() decoding.Decoder {
+	return &utf8_Decoder{}
 }
