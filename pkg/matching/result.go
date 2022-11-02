@@ -1,27 +1,39 @@
 package matching
 
-type MatchResult struct {
+type Result struct {
 	Charset    string
 	Language   string
 	Confidence int
 	BOM        bool
+	LTR        bool
 }
 
-type MatchResults []MatchResult
+type ResultConfig func(r *Result)
 
-func (mr MatchResults) Len() int {
-	return len(mr)
+func CreateResult(charset string, rc ...ResultConfig) Result {
+	r := &Result{Charset: charset}
+
+	for _, c := range rc {
+		c(r)
+	}
+
+	return *r
 }
 
-func (ps MatchResults) Less(i, j int) bool {
-	return ps[i].Confidence < ps[j].Confidence
+func WithBOM(bv bool) ResultConfig {
+	return func(r *Result) {
+		r.BOM = bv
+	}
 }
 
-// Swap switches two values in our slice
-func (mr MatchResults) Swap(i, j int) {
-	tmp := mr[i]
+func WithConfidence(confidence int) ResultConfig {
+	return func(r *Result) {
+		r.Confidence = confidence
+	}
+}
 
-	mr[i] = mr[j]
-
-	mr[j] = tmp
+func WithLeftToRight(ltr bool) ResultConfig {
+	return func(r *Result) {
+		r.LTR = ltr
+	}
 }
