@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	charmagic "github.com/cearius/go-charmagic"
+	"github.com/cearius/go-charmagic/pkg/m"
 	"github.com/cearius/go-charmagic/pkg/matching"
 	testify "github.com/stretchr/testify/assert"
 )
@@ -12,7 +13,7 @@ func Test_AllDecoders(t *testing.T) {
 	assert := testify.New(t)
 	ti := matching.FromBytes([]byte{})
 
-	for _, d := range charmagic.CreateAllMatchers() {
+	for _, d := range m.CreateAllMatchers() {
 		r := d.Match(ti)
 
 		_, err := charmagic.GetDecoder(r.Charset)
@@ -26,7 +27,7 @@ func Test_AllDecoders_AllSupported(t *testing.T) {
 	assert := testify.New(t)
 	ti := matching.FromBytes([]byte{})
 
-	for _, d := range charmagic.CreateAllMatchers() {
+	for _, d := range m.CreateAllMatchers() {
 		r := d.Match(ti)
 
 		assert.NotPanics(func() {

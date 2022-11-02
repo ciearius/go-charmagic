@@ -62,8 +62,9 @@ func GetDecoderFromResult(r *matching.Result) (enc encoding.Encoding) {
 	return enc
 }
 
-func get_encoding(i *ianaindex.Index, name string) encoding.Encoding {
-	enc, err := queryIndex(ianaindex.IANA, name)
+// get_encoding tries to fetch the encoding matching the name from the provided Index
+func get_encoding(idx *ianaindex.Index, name string) encoding.Encoding {
+	enc, err := queryIndex(idx, name)
 
 	if enc != nil {
 		return enc
@@ -81,10 +82,11 @@ func get_encoding(i *ianaindex.Index, name string) encoding.Encoding {
 }
 
 // queryIndex checks the index and returns an encoding and a bool.
-func queryIndex(i *ianaindex.Index, name string) (enc encoding.Encoding, err error) {
+func queryIndex(idx *ianaindex.Index, name string) (enc encoding.Encoding, err error) {
+
 	// enc == nil && err != nil => no match
 	// enc == nil && err == nil => not supported
-	enc, err = i.Encoding(name)
+	enc, err = idx.Encoding(name)
 
 	if enc == nil && err != nil {
 		return nil, errNoMatch
