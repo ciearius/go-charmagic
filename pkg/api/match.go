@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"errors"
@@ -19,7 +19,7 @@ func MatchAll(buf []byte) (results matching.Results) {
 		results = append(results, matcher.Match(input))
 	}
 
-	sort.Stable(results)
+	sort.Stable(sort.Reverse(results))
 
 	return results
 }

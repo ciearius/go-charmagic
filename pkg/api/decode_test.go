@@ -1,9 +1,9 @@
-package main_test
+package api_test
 
 import (
 	"testing"
 
-	charmagic "github.com/cearius/go-charmagic"
+	charmagic "github.com/cearius/go-charmagic/pkg/api"
 	"github.com/cearius/go-charmagic/pkg/m"
 	"github.com/cearius/go-charmagic/pkg/matching"
 	testify "github.com/stretchr/testify/assert"
