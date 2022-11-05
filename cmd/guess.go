@@ -78,6 +78,5 @@ func ReadLinesAsBytes(file string) ([]byte, error) {
 
 func init() {
 	rootCmd.AddCommand(guessCmd)
-
 	guessCmd.Flags().StringP("input", "i", "", "input file")
 }
