@@ -12,21 +12,19 @@ import (
 
 // transformCmd represents the guess command
 var transformCmd = &cobra.Command{
-	Use:   "transcribe",
+	Use:   "transform",
 	Short: "Convert a file to utf-8",
 	Run:   TransformFile,
 }
 
-func ensureArgs(cmd *cobra.Command) (input, output, encName string, err error) {
+func ensureArgs(cmd *cobra.Command) (input, output string, err error) {
 	inputFlag := cmd.Flag("input")
 	outputFlag := cmd.Flag("output")
-	encFlag := cmd.Flag("encoding")
 
-	if inputFlag.Value.String() == "" || outputFlag.Value.String() == "" || encFlag.Value.String() == "" {
-		return "", "", "", errors.New("missing arguments")
+	if inputFlag.Value.String() == "" || outputFlag.Value.String() == "" {
+		return "", "", errors.New("missing arguments")
 	}
 
-	encName = encFlag.Value.String()
 	output = outputFlag.Value.String()
 	input = inputFlag.Value.String()
 
@@ -49,12 +47,42 @@ func openFiles(input, output string) (inputFile, outputFile *os.File, err error)
 	return
 }
 
+func GetEncoding(cmd *cobra.Command) (string, error) {
+	enc := cmd.Flag("encoding").Value.String()
+
+	if enc != "" {
+		return enc, nil
+	}
+
+	buf, err := util.ReadLinesAsBytes(cmd.Flag("input").Value.String())
+
+	if err != nil {
+		return "", err
+	}
+
+	result, err := charmagic.MatchBest(buf)
+
+	if err != nil {
+		return "", err
+	}
+
+	fmt.Printf("using %s with confidence of (%d/100)\n", result.Charset, result.Confidence)
+
+	return result.Charset, nil
+}
+
 func TransformFile(cmd *cobra.Command, args []string) {
-	input, output, encName, err := ensureArgs(cmd)
+	input, output, err := ensureArgs(cmd)
 
 	if err != nil {
 		cmd.Usage()
 		return
+	}
+
+	encName, err := GetEncoding(cmd)
+
+	if err != nil {
+		fmt.Printf("Failed to get encoding of input\n%s\n", err)
 	}
 
 	enc, err := charmagic.GetDecoder(encName)
