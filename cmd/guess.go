@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cearius/go-charmagic/pkg/api"
+	"github.com/cearius/go-charmagic"
 	"github.com/spf13/cobra"
 )
 
@@ -29,7 +29,7 @@ func GuessEncoding(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	res := api.MatchAll(data)
+	res := charmagic.MatchAll(data)
 
 	for i, r := range res {
 		fmt.Printf("%d. %d\t%s\t\t%s\n", i+1, r.Confidence, r.Charset, r.Language)

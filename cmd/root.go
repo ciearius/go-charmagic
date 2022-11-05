@@ -10,7 +10,8 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "charmagic",
 	Short: "Guess and decode weird text into UTF-8.",
-	Long:  ``,
+	Long: `Guess and transcribe your text files into UTF-8 for easier handling.
+Can also be used as a golang library.`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

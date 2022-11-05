@@ -1,4 +1,4 @@
-package api
+package charmagic
 
 import (
 	"errors"
